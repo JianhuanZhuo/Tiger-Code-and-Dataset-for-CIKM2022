@@ -1,0 +1,26 @@
+_grid_search_:
+  "model/optimizer/lr": [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1 ]  # learning_rate
+  "model/drop": [ 0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8 ]
+_grid_search_repeat: 3
+gpus: "[0] * 5"
+
+cuda: "0"
+name: BPR
+model:
+  dim: 32
+  model: BPR
+  drop: 0
+  decay: 0
+  optimizer_class: Adam
+  optimizer:
+    lr: 0.1
+
+DataLoader:
+  batch_size: 8192
+
+dataset:
+  source: AB202Kdc3ge # ML1MDataset # CiteULikeDataset / ML100KDataset
+  filter_rating: 0
+  split_mode: leave-one-out
+  fast: True
+SamplingSpace: BasedSamplingSpace

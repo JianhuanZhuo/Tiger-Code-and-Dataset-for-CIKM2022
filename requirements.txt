@@ -1,0 +1,8 @@
+GitPython
+GPUtil
+PyYAML
+setproctitle
+tqdm
+class-resolver
+dgl-cu111
+numpy

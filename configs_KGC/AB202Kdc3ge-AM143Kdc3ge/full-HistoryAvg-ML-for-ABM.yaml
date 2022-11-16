@@ -1,0 +1,49 @@
+_grid_search_:
+  "model/optimizer/lr": [ 0.01, 0.03, 0.1 ]  # learning_rate
+  "model/drop": [ 0, 0.2, 0.4 ]
+  "model/layer_slice": [ 0, 2, 4, 6, 8 ]
+  "model/n_layers": [ 1, 2, 4, 6, 8 ]
+  "model/k": [1,2,4,8,16]
+_grid_search_repeat: 3
+gpus: "[0] * 5"
+
+cuda: "0"
+model:
+  dim: 32
+  model: AvgLGNRecModel
+  n_layers: 6
+  layer_slice: 6
+  drop: 0.0
+  decay: 0
+  k: 1
+  #  vk: 8
+  optimizer:
+    lr: 0.3
+
+DataLoader:
+  batch_size: 8192
+
+evaluator_args:
+  stop_delay: 5
+  use_stop: True
+  eval_xs: [ 10, 100 ]
+  checkpoint_save: False
+epochs: 100
+evaluator_time: 2
+#evaluator_args:
+##  stop_delay: 5
+#  use_stop: False
+#train:
+#  print_eval: True
+#  print_best: True
+
+dataset:
+  third: ML1Mdc5geAvg # ML1MDataset # CiteULikeDataset / ML100KDataset
+  source: AB202Kdc3geAvg # ML1MDataset # CiteULikeDataset / ML100KDataset
+  target: AM143Kdc3geAvg # ML1MDataset # CiteULikeDataset / ML100KDataset
+  kg: MBMhop1ConnectKGDataset
+  target_split_mode: leave_one_out
+  filter_rating: 0
+  split_mode: leave-one-out
+  fast: True
+SamplingSpace: BasedSamplingSpace

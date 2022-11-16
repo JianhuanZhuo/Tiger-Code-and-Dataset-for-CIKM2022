@@ -1,2 +1,6 @@
-This github repo is temporally closed for patent application. If you need it, please feel free to contact email jianxun.lian@outlook.com or me@zhuojianhuan.cn for the source code.  
+# How to run?
+- git clone this rep
+- install dependencies specified in `requirements.txt`
+- just run `python run.py`, which will download datasets automatically.
 
+If you encounter any problems, please feel free to let us know!
